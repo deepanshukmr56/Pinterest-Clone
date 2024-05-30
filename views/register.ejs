@@ -1,0 +1,52 @@
+<% include ./partials/header.ejs %>
+
+  <div
+    class="container mx-auto min-h-screen flex items-center justify-center bg-[url('https://plus.unsplash.com/premium_photo-1667587245819-2bea7a93e7a1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center">
+    <main class="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
+      <!-- Pinterest logo -->
+      <div class="flex justify-center mb-6">
+        <img src="https://i.pinimg.com/originals/d3/d1/75/d3d175e560ae133f1ed5cd4ec173751a.png" alt="Pinterest logo"
+          class="w-14" />
+      </div>
+      <p class="text-center text-2xl font-semibold mb-6">Create new account</p>
+
+      <!-- <% if (typeof error !== 'undefined' && error.length > 0) { %> -->
+      <p class="text-red-500 mb-4 text-center"><!--<%= error %>--></p>
+      <!-- <% } %> -->
+
+      <form action="/register" method="post" class="flex flex-col gap-3">
+        <label for="username" class="sr-only">Username</label>
+        <input id="username" name="username" type="text" placeholder="Username"
+          class="py-2 px-3 border-2 border-gray-300 rounded-xl outline-none" required />
+
+        <label for="email" class="sr-only">email</label>
+        <input id="email" name="email" type="email" placeholder="email"
+          class="py-2 px-3 border-gray-300 border-2 rounded-xl outline-none" required />
+
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" name="password" type="password" placeholder="Password"
+          class="py-2 px-3 border-gray-300 border-2 rounded-xl outline-none" required />
+
+        <label for="Contact" class="sr-only">Contact</label>
+        <input id="Contact" name="Contact" type="number" placeholder="Contact"
+          class="py-2 px-3 border-gray-300 border-2 rounded-xl outline-none" required />
+
+        <input class="bg-red-600 text-white py-2 px-3 rounded-full cursor-pointer hover:bg-red-700 mt-86"
+          value="Create Account" type="submit" />
+      </form>
+
+      <footer class="mt-6">
+        <p class="text-center text-gray-600 text-sm">
+          By continuing, you agree to Pinterest's
+          <b>Terms of Service, Privacy Policy.</b>
+        </p>
+        <hr class="my-4" />
+        <p class="text-center text-sm">
+          Already have an account?
+          <a href="/" class="text-blue-500">login</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <% include ./partials/footer.ejs %>

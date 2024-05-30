@@ -1,0 +1,94 @@
+<% include ./partials/header.ejs %>
+<form
+  action="/fileupload"
+  method="post"
+  enctype="multipart/form-data"
+  id="uploadform"
+  class="hidden"
+>
+  <input type="file" name="image" />
+</form>
+<div class="max-w-[80%] mx-auto mt-4 p-6 bg-white shadow-lg rounded-md">
+  <div class="flex flex-col items-center ">
+    <div
+      class="icon absolute w-10 h-10 bg-zinc-200 hover:cursor-pointer rounded-full  right-[45%] top-60 "
+      id="uploadicon"
+    >
+      <i
+        class="ri-pencil-line text-xl text-zinc-800 relative left-[10px] top-[5px]"
+      ></i>
+    </div>
+    <div class="">
+      <img
+        src="/images/uploads/<%= user.profileImage %>"
+        class="w-48 h-48 object-cover rounded-full object-top mb-5 bg-[url('https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg')] bg-cover"
+        
+      />
+    </div>
+    <div class="text-center mb-6">
+      <h1 class="text-3xl text-zinc-800 font-bold mb-2">
+        @<%= user.username %>
+      </h1>
+      <p class="text-base text-gray-600"><%= user.name %></p>
+      <p class="text-base text-gray-600"><%= user.email %></p>
+      <div class="mt-4">
+        <a
+          href="/add"
+          class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
+          >Add New Post</a
+        >
+      </div>
+    </div>
+    <div class="mt-4">
+      <form
+        action="/upload"
+        method="post"
+        enctype="multipart/form-data"
+        class="space-y-2 hidden flex flex-col"
+      >
+        <input
+          type="text"
+          name="filecaption"
+          placeholder="Type caption"
+          class="w-80 p-2 border border-gray-300 rounded-md text-center outline-none text-zinc-700"
+        />
+        <input
+          type="file"
+          name="file"
+          class="w-full p-2 border border-gray-300 rounded-md text-zinc-700 text-center"
+        />
+        <button
+          type="submit"
+          class="bg-white border border-gray-400 text-gray-700 px-4 py-2 rounded-xl"
+        >
+          Upload
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="max-w-[80%] mx-auto mt-4 p-6 bg-white shadow-lg rounded-md pb-8">
+  <h2 class="text-2xl font-bold mb-6 text-center text-zinc-800">Your Posts</h2>
+  <a href="/show/posts" class="flex  flex-wrap gap-12 w-48 shadow-md">
+    <div
+      class="bg-white border border-gray-300 rounded-md overflow-hidden flex-shrink-0 w-48"
+    >
+      <img src="/images/uploads/<%= user?.posts[0]?.Image %>" alt="Post Image" class="w-full h-28  object-cover " />
+      <h3 class=" text-gray-800  text-md px-2">
+        Uploaded Pins
+      </h3>
+      <p class=" opacity-60  text-gray-700 font-medium px-2  text-sm pb-1"><%= user?.posts?.length %> Pins</p>
+    </div>
+  </a>
+</div>
+<script>
+  document.querySelector("#uploadicon").addEventListener("click", () => {
+    document.querySelector("#uploadform input").click();
+  });
+
+  document.querySelector("#uploadform input").addEventListener("change", () => {
+    document.querySelector("#uploadform").submit();
+  });
+</script>
+
+<% include ./partials/footer.ejs %>

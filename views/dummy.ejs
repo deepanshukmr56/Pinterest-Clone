@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/register.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>pinterest-profile</title>
+  </head>
+  <body class="font-sans bg-gray-200 m-0 p-0">
+    <form
+      action="/fileupload"
+      method="post"
+      enctype="multipart/form-data"
+      id="uploadform"
+      class="hidden"
+    >
+      <input type="file" name="image" />
+    </form>
+    <div class="max-w-[80%] mx-auto mt-8 p-6 bg-white shadow-lg rounded-md">
+      <div class="">
+        <div class="absolute">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png"
+            alt="Pinterest logo"
+            class="w-12"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div
+          class="icon absolute w-8 h-8 bg-zinc-200 hover:cursor-pointer rounded-full right-[45%] top-52"
+          id="uploadicon"
+        >
+          <i class="ri-pencil-line text-zinc-800 relative left-2 top-[2px]"></i>
+        </div>
+        <div>
+          <img
+            src="/images/uploads/<%= user.profileImage %>"
+            class="w-48 h-48 rounded-full object-cover object-top mb-5"
+          />
+        </div>
+        <div class="text-center mb-6">
+          <h1 class="text-3xl text-zinc-800 font-bold mb-2">@deep</h1>
+          <p class="text-base text-gray-600">deepanshu</p>
+          <p class="text-base text-gray-600">kmr@deepanshu.com</p>
+          <div class="mt-4">
+            <a
+              href="/logout"
+              class="bg-red-700 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
+              >LogOut</a
+            >
+          </div>
+        </div>
+        <div class="mt-4">
+          <form
+            action="/upload"
+            method="post"
+            enctype="multipart/form-data"
+            class="space-y-2 hidden flex flex-col"
+          >
+            <input
+              type="text"
+              name="filecaption"
+              placeholder="Type caption"
+              class="w-80 p-2 border border-gray-300 rounded-md text-center outline-none text-zinc-700"
+            />
+            <input
+              type="file"
+              name="file"
+              class="w-full p-2 border border-gray-300 rounded-md text-zinc-700 text-center"
+            />
+            <button
+              type="submit"
+              class="bg-white border border-gray-400 text-gray-700 px-4 py-2 rounded-xl"
+            >
+              Upload
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div
+      class="max-w-[80%] mx-auto mt-12 p-6 bg-white shadow-lg rounded-md pb-8"
+    >
+      <h2 class="text-2xl font-bold mb-6 text-center text-zinc-800">
+        Your Posts
+      </h2>
+      <div class="flex justify-center flex-wrap gap-12">
+        <div
+          class="bg-white border border-gray-300 rounded-md overflow-hidden flex-shrink-0 w-[200px]"
+        >
+          <img src="alt" ="Post Image" class="w-full h-auto object-cover" />
+          <p class="p-4 text-center text-gray-700 font-medium">""</p>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.querySelector("#uploadicon").addEventListener("click", () => {
+        document.querySelector("#uploadform input").click();
+      });
+
+      document
+        .querySelector("#uploadform input")
+        .addEventListener("change", () => {
+          document.querySelector("#uploadform").submit();
+        });
+    </script>
+  </body>
+</html>

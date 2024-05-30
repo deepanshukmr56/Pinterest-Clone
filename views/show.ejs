@@ -1,0 +1,12 @@
+<% include ./partials/header.ejs %>
+<div class="w-[90%] mx-auto min-h-screen bg-white pt-1 my-4 rounded-lg shadow-lg px-4 flex flex-wrap gap-4 justify-evenly">
+  <% user.posts.forEach(function(elem) { %>
+    <div class="bg-white border-[0.5px] border-black w-60 h-72 m-4 rounded-md p-3 flex flex-col">
+      <div class="overflow-hidden w-full shadow-sm h-60">
+        <img class="object-cover object-center w-full h-full" src="/images/uploads/<%= elem.Image  %>" alt="Post Image" />
+      </div>
+      <h3 class="p-1"><%= elem.title %></h3>
+    </div>
+  <% }); %>
+</div>
+<% include ./partials/footer.ejs %>

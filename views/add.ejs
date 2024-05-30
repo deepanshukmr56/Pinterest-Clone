@@ -1,0 +1,21 @@
+<% include ./partials/header.ejs %>
+
+<div class="add-main w-3/4 bg-white shadow-md mx-auto mt-20 rounded-md ">
+    <h1 class="text-center text-4xl py-6 font-sans">create a new Post</h1>
+    <hr>
+    <form action="/createpost" method="post" enctype="multipart/form-data">
+        <div class="main-class flex justify-around">
+          <input type="file" name="postimage" id="" class="mt-40">
+          <div class="flex flex-col w-1/2  ">
+            <label for="" class="px-2 mt-3 mb-1">Title</label>
+            <input class="block rounded-md border-2 px-2 py-2 text-gray-700 outline-none" type="text" name="title" id="" placeholder="Enter Title">
+            <label for="" class="px-2 mt-3 mb-1">Description</label>
+            <textarea class="pt-2 block rounded-md border-2 px-2 h-48 text-start text-gray-700 outline-none" type="text" name="description" id="" placeholder="Type Description"></textarea>
+            <input class="block px-2 py-2 mt-3 mb-6 text-white bg-red-600 hover:cursor-pointer hover:bg-red-800 outline-none  rounded-lg text-center" type="submit" value="Create Post">
+          </div>
+        </div>
+    </form>
+  </div>
+
+
+<% include ./partials/footer.ejs %>
